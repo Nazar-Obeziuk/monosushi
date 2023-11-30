@@ -1,0 +1,175 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/base';
+@import '../../shared/styles/mixins';
+
+.container {
+}
+.footer {
+
+		&__section {
+		}
+
+		&__wrapper {
+            border-top: 4px solid $primary;
+		}
+
+		&__logo {
+
+			&_list {
+			}
+		}
+
+		&__nav {
+
+			&_list {
+			}
+		}
+
+		&__address {
+
+			&_list {
+                @include flex-center;
+                flex-direction: column;
+                gap: 6px;
+			}
+
+			&_title {
+                font-weight: 700;
+                color: $black;
+                font-size: 14px;
+			}
+
+			&_text {
+                width: 210px;
+                text-align: center;
+                font-size: 14px;
+			}
+		}
+}
+.wrapper {
+
+		&__info {
+            margin: 0 35px;
+            padding: 20px 0;
+            @include flex-between;
+		}
+
+		&__media {
+            margin: 0 35px;
+            margin-bottom: 20px;
+            @include flex-between;
+		}
+}
+.info {
+
+		&__footer {
+
+			&_logo {
+			}
+
+			&_nav {
+                @include flex-between;
+                gap: 55px;
+			}
+
+			&_address {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 20px;
+			}
+		}
+}
+.logo {
+
+		&__list {
+
+			&_item {
+			}
+		}
+}
+.list {
+
+		&__item {
+
+			&_image {
+                height: 50px;
+			}
+		}
+}
+.nav {
+
+		&__list {
+
+			&_item {
+                color: $black;
+			}
+		}
+}
+.media {
+
+		&__monosushi {
+		}
+
+		&__payment {
+            @include flex-center;
+            gap: 10px;
+		}
+
+		&__fop {
+		}
+
+		&__links {
+            @include flex-center;
+            gap: 10px;
+
+			&_list {
+			}
+
+			&_mess {
+                width: 50px;
+                height: 50px;
+                background: $primary;
+                border-radius: 8px;
+                cursor: pointer;
+                @include flex-center;
+			}
+		}
+
+		&__sites {
+		}
+}
+.payment {
+
+		&__list {
+            width: 68px;
+            height: 40px;
+            border: 1px solid rgb(222, 222, 222);
+            border-radius: 4px;
+            @include flex-center;
+		}
+
+		&__item {
+
+			&_image {
+			}
+		}
+}
+.fop {
+
+		&__text {
+		}
+}
+.links {
+
+		&__mess {
+
+			&_image {
+			}
+		}
+}
+.create {
+
+		&__sites {
+		}
+}

@@ -1,0 +1,257 @@
+<div class="container">
+    <section class="header__section">
+        <header class="header">
+            <div class="header__wrapper">
+                <div class="header__logo_wrapper">
+                    <a routerLink="/" class="header__logo">
+                        <img src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" alt="" class="header__logo_item">
+                    </a>
+                </div>
+                <div class="header__nav_wrapper">
+                    <nav class="header__navbar">
+                        <ul class="navbar__main_menu">
+                            <li class="navbar__menu_list">
+                                <a routerLink="./discount" class="menu__list_item">
+                                    <div class="list__item_wrapper">
+                                        <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-gift.svg" alt="" class="item__wrapper_image">
+                                        <span class="item__wrapper_desc">Акції</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="navbar__menu_list">
+                                <a routerLink="./product/rolls" class="menu__list_item">
+                                    <div class="list__item_wrapper">
+                                        <img src="	https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-rolls.svg" alt="" class="item__wrapper_image">
+                                        <span class="item__wrapper_desc">Роли</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="navbar__menu_list">
+                                <a routerLink="./product/sets" class="menu__list_item">
+                                    <div class="list__item_wrapper">
+                                        <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-sets.svg" alt="" class="item__wrapper_image">
+                                        <span class="item__wrapper_desc">Сети</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="navbar__menu_list">
+                                <a routerLink="./product/drinks" class="menu__list_item">
+                                    <div class="list__item_wrapper">
+                                        <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-drinks.svg" alt="" class="item__wrapper_image">
+                                        <span class="item__wrapper_desc">Напої</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="navbar__menu_list">
+                                <a routerLink="./product/souces" class="menu__list_item">
+                                    <div class="list__item_wrapper">
+                                        <img src="https://monosushi.com.ua/wp-content/uploads/2021/09/icon.svg" alt="" class="item__wrapper_image">
+                                        <span class="item__wrapper_desc">Соуси</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar__secondary_menu">
+                            <div class="secondary__menu_wrapper">
+                                <div class="menu__wrapper_burger">
+                                    <div *ngIf="!isModalOpen" (click)="openModalMenu()" class="menu__burger">
+                                        <svg class="menu__burger_image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path height="4em" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+                                    </div>
+                                    <svg class="menu__burger_image" *ngIf="isModalOpen" (click)="closeModalMenu()" xmlns="http://www.w3.org/2000/svg" height="5em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+                                </div>
+                                <ul class="secondary__menu_burger" *ngIf="isModalOpen">
+                                    <li class="menu__burger_list">
+                                        <a (click)="closeModalMenu()" routerLink="./delivery-payment" class="burger__list_item">
+                                            <span class="list__item_text">Доставка та оплата</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu__burger_list">
+                                        <a (click)="closeModalMenu()" routerLink="./about" class="burger__list_item">
+                                            <span class="list__item_text">Про нас</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu__burger_list">
+                                        <a (click)="closeModalMenu()" routerLink="./discount" class="burger__list_item">
+                                            <span class="list__item_text">Акції на суші</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <li class="secondary__menu_call">
+                                    <button class="menu__call_button" (click)="openCallDialog()">
+                                        <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="" class="call__button_image">
+                                        <span class="menu__call_text">МИ ЗАТЕЛЕФОНУЄМО</span>
+                                    </button>
+                                </li>
+                                <li class="secondary__menu_work">
+                                    <a href="" class="menu__work_phone">+380978780837</a>
+                                    <div class="menu__work_time">
+                                        Працюємо з
+                                        <b>11:00</b>
+                                        до
+                                        <b>22:30</b>
+                                    </div>
+                                </li>
+                                <a (click)="openDialogModal()" class="navbar__user">
+                                    <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="" class="navbar__user_img">
+                                </a>
+                            </div>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header__basket_wrapper">
+                    <a (click)="openBasketModal()" class="header__basket">
+                        <div class="basket__items">
+                            <img class="basket__items_img" src="	https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" alt="" class="header__basket_img">
+                            <span class="basket__items_count">{{ basket.length }}</span>
+                        </div>
+                        <div class="basket__count">
+                            <b class="basket__count_item">{{ total }}</b>
+                            <span class="basket__count_text">грн</span>
+                        </div>
+                    </a>
+                </div>
+
+                <ng-container *ngIf="isBasketOpen">
+                    <div class="checkout__wrapper">
+                        <div class="checkout__block">
+                            <div class="checkout__main_products">
+                                <div class="checkout__empty_wrapper" *ngIf="basket.length === 0">
+                                    <div class="checkout__empty_banner">
+                                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/icons/cart-empty-img.svg" alt="" class="checkout__empty_image">
+                                        <h3 class="checkout__empty_title">Кошик порожній</h3>
+                                    </div>
+                                    <button class="checkout__empty_button" routerLink="./" type="button">Перейти до каталогу</button>
+                                </div>
+                                <div class="checkout__product_block" *ngFor="let productBasket of basket; index as i">
+                                    <div class="checkout__image_wrapper">
+                                        <img [src]="productBasket.imagePath" alt="" class="checkout__product_image">
+                                    </div>
+                                    <div class="checkout__text_wrapper">
+                                        <h3 class="checkout__product_title">{{ productBasket.name }}</h3>
+                                    </div>
+                                    <div class="checkout__product_count">
+                                        <button (click)="countOfProduct(productBasket, false)" class="product__count_plus product__count_btn">-</button>
+                                        <span class="product__count_text">{{ productBasket.count }}</span>
+                                        <button (click)="countOfProduct(productBasket, true)" class="product__count_plus product__count_btn">+</button>
+                                    </div>
+                                    <div class="checkout__price_wrapper">
+                                        <p class="checkout__product_price"><span class="checkout__product_bold">{{ productBasket.price * productBasket.count }}</span> грн</p>
+                                    </div>
+                                    <img (click)="deleteProductFromBasket(i)" src="https://static-00.iconduck.com/assets.00/delete-icon-1864x2048-bp2i0gor.png" alt="" class="checkout__product_delete">
+                                </div>
+                            </div>
+                            <div class="checkout__footer">
+                                <p class="checkout__footer_text">Сума: <span class="checkout__footer_bold">{{ total }}</span> грн</p>
+                                <button class="checkout__footer_button" type="button">Оформити замовлення</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </header>
+    </section>
+
+    <div (click)="openBasketModal()" *ngIf="isBasketOpen || isLoginModalOpen || isCallModalOpen" class="overlay"></div>
+
+    <ng-container *ngIf="isCallModalOpen">
+        <div class="call__modal">
+            <div class="call__wrapper">
+                <div class="call__close">
+                    <svg (click)="openCallDialog()" class="call__close_icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" /></svg>
+                </div>
+                <div class="call__content_wrapper">
+                    <div class="call__info">
+                        <h2 class="call__info_title">МИ ЗАТЕЛЕФОНУЄМО</h2>
+                        <p class="call__info_text">
+                            Залиште номер телефону і наші менеджери зв'яжуться з вами
+                        </p>
+                    </div>
+                    <div class="call__form_wrapper">
+                        <form class="call__form">
+                            <div class="call__name_wrapper">
+                                <input type="text" class="call__name_input modal__input" placeholder="Ваше ім'я">
+                            </div>
+                            <div class="call__phone_wrapper">
+                                <input type="number" class="call__phone_input modal__input" placeholder="Ваш номер телефону">
+                            </div>
+                            <div class="call__send_wrapper">
+                                <button type="button" class="call__send_button">Надіслати</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="isLoginModalOpen">
+        <div class="container">
+            <div class="auth__wrapper">
+                <ng-container *ngIf="!isSignIn">
+                    <div class="auth__block">
+                        <form [formGroup]="authForm" class="auth__form">
+                            <div class="auth__close">
+                                <svg (click)="openDialogModal()" class="auth__close_icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" /></svg>
+                            </div>
+                            <div class="auth__content_wrapper">
+                                <div class="auth__text_wrapper">
+                                    <h2 class="auth__text">Вхід в кабінет</h2>
+                                </div>
+                                <div class="auth__email_wrapper">
+                                    <input formControlName="email" name="email" type="email" class="auth__email modal__input"
+                                        placeholder="Ваш email">
+                                </div>
+                                <div class="auth__password_wrapper">
+                                    <input formControlName="password" name="password" type="password" class="auth__password modal__input"
+                                        placeholder="Пароль">
+                                </div>
+                                <div class="auth__button_wrapper">
+                                    <button (click)="loginUser()" class="auth__button" type="submit">Увійти в кабінет</button>
+                                </div>
+                                <div class="auth__footer_wrapper">
+                                    <p (click)="toggleRegistration()" class="auth__footer_signup">Зареєструватись</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="isSignIn">
+                    <div class="signup__block">
+                        <form [formGroup]="authForm" class="auth__form">
+                            <div class="auth__close">
+                                <svg (click)="openDialogModal()" class="auth__close_icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" /></svg>
+                            </div>
+                            <div class="auth__content_wrapper">
+                                <div class="auth__text_wrapper">
+                                    <h2 class="auth__text">Зареєструватись</h2>
+                                </div>
+                                <div class="auth__fullname_wrapper">
+                                    <input formControlName="firstName" name="firstName" type="text" class="auth__firstname modal__input" placeholder="Ваше імя">
+                                    <input formControlName="lastName" name="lastName" type="text" class="auth__lastname modal__input" placeholder="Ваше прізвище">
+                                </div>
+                                <div class="auth__phone_wrapper">
+                                    <input formControlName="phone" name="phone" type="number" class="auth__phone modal__input" placeholder="Ваш телефон">
+                                </div>
+                                <div class="auth__email_wrapper">
+                                    <input formControlName="email" name="email" type="email" class="auth__email modal__input" placeholder="Ваш email">
+                                </div>
+                                <div class="signup__password_wrapper">
+                                    <input (input)="checkConfirmPassword()" formControlName="password" name="password" type="password" class="signup__password modal__input" placeholder="Пароль">
+                                    <input (input)="checkConfirmPassword()" formControlName="confirmationPassword" name="confirmationPassword" type="password" class="signup__password modal__input" placeholder="Повторіть пароль">
+                                </div>
+                                <p *ngIf="checkVisibilityError('confirmationPassword', 'matchError')">Пароль не співпадає з минулим</p>
+                                <div class="auth__button_wrapper">
+                                    <button (click)="registerUser()" class="auth__button" type="submit">Зареєструватись</button>
+                                </div>
+                                <div class="auth__footer_wrapper">
+                                    <p (click)="toggleRegistration()" class="auth__footer_signup">Вже зареєстровані? <span class="auth__signup_bold">Увійти</span></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </ng-container>
+                
+            </div>
+        </div>
+    </ng-container>
+</div>

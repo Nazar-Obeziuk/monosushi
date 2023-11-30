@@ -1,0 +1,52 @@
+<div class="box" *ngIf="currentProduct">
+    <section class="product__info_section">
+        <div class="container">
+            <div class="product__info_wrapper">
+                <div class="product__nav_wrapper">
+                    <ul class="product__nav_list">
+                        <li class="nav__list_item">
+                            <a routerLink="/" class="list__item_link">Головна</a>
+                        </li>
+                        <li class="nav__list_item">
+                            <a routerLink="/product/rolls" class="list__item_link">Роли</a>
+                        </li>
+                        <li class="nav__list_item">
+                            <a href="" class="list__item_link">Роли Філадельфія</a>
+                        </li>
+                        <li class="nav__list_item">
+                            <a href="" class="list__item_link">Філадельфія З Лососем</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="product__wrapper">
+                    <div class="product__info_item">
+                        <div class="product__image_wrapper">
+                            <img class="product__image_item" [src]="currentProduct.imagePath" alt="">
+                        </div>
+                        <div class="product__desc_wrapper">
+                            <h2 class="product__desc_title">{{ currentProduct.name }}</h2>
+                            <p class="product__desc_text"><span class="product__desc_bold">Склад: </span> {{ currentProduct.ingredients }}</p>
+                            <div class="product__desc_weight">
+                                <p class="desc__weight_text"><span class="product__weight_bold">Вага:</span> {{ currentProduct.weight }}</p>
+                            </div>
+                            <div class="product__desc_info">
+                                <div class="product__desc_sum">
+                                    <p class="desc__sum_text"><span class="desc__sum_item">{{ currentProduct.price * currentProduct.count }}</span> грн</p>
+                                </div>
+                                <div class="product__desc_count">
+                                    <button (click)="countOfProduct(currentProduct, false)" class="desc__count_minus desc__count_btn">-</button>
+                                    <span class="desc__count_text">{{ currentProduct.count }}</span>
+                                    <button (click)="countOfProduct(currentProduct, true)" class="desc__count_plus desc__count_btn">+</button>
+                                </div>
+                                <div class="product__desc_basket">
+                                    <button (click)="addProductToBasket(currentProduct)" class="desc__basket_button" type="button">Замовити</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

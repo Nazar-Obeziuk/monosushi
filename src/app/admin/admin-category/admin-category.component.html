@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="wrapper">
+        <button (click)="changeCategoryModal()" class="wrapper__add_discount">Додати категорію</button>
+        <ng-container *ngIf="isModalOpen">
+            <div class="forms">
+                <form [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+                    <div class="form__header">
+                        <input formControlName="name" type="text" class="form__name" id="name" placeholder="*Назва">
+                        <input formControlName="path" type="text" class="form__path" id="path" placeholder="*Шлях">
+                    </div>
+                    <ng-container *ngIf="!isUploaded">
+                        <div class="category__file_wrapper">
+                            <div class="file">
+                                <input type="file" class="form__file" id="formFile" (change)="upload($event)">
+                            </div>
+                            <div class="progress">
+                                <div class="progress__item" role="progressbar"
+                                    [style.width.%]="uploadPercent" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="isUploaded">
+                        <div class="file__load">
+                            <img class="admin__img" [src]="valueByControl('imagePath')" alt="">
+                            <button type="button" class="image__button" (click)="deleteImage()">Видалити</button>
+                        </div>
+                    </ng-container>
+                    <button [disabled]="categoryForm.invalid" type="submit" class="form__button">{{ editStatus ? 'Зберегти' : 'Додати' }}</button>
+                </form>
+            </div>
+        </ng-container>
+        
+       
+        <ng-container *ngIf="!isModalOpen">
+            <div class="table__wrapper">
+                <table class="table">
+                    <tr class="table__header">
+                        <th class="header__sharp table__item">№</th>
+                        <th class="header__name table__item">Назва</th>
+                        <th class="header__way table__item">Шлях</th>
+                        <th class="header__image table__item">Картинка</th>
+                        <th class="header__actions table__item">Дії</th>
+                    </tr>
+                    <tr class="table__main" *ngFor="let category of adminCategories">
+                        <td class="main__sharp table__item">
+                            № {{ (category.id + '').length > 10 ? (category.id + '' | slice: 0:10) + '...' : category.id }}
+                        </td>
+                        <td class="main__name table__item">{{ category.name }}</td>
+                        <td class="main__path table__item">
+                            {{ category.path.length > 30 ? (category.path | slice:0:30) + '...' : category.path }}
+                            <!-- {{ category.path | slice:0:30 }}
+                            <span *ngIf="category.path.length > 30">...</span> -->
+                        </td>
+                        <td class="main__image table__item">
+                            <img class="main__image_item" [src]="category.imagePath" alt="">
+                        </td>
+                        <td class="main__actions table__item">
+                            <button (click)="editCategory(category)" class="actions__edit actions__btn" type="button">Редагувати</button>
+                            <button (click)="deleteCategory(category)" class="actions__delete actions__btn" type="button">Видалити</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </ng-container>
+    </div>
+</div>

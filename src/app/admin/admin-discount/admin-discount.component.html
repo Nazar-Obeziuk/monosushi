@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="wrapper">
+        <button (click)="changeDiscountModal()" class="wrapper__add_discount">Додати акцію</button>
+        <ng-container *ngIf="isModalOpen">
+            <div class="forms">
+                <form [formGroup]="discountForm" (ngSubmit)="addDiscount()">
+                    <div class="form__header">
+                        <input formControlName="name" type="text" class="form__name" id="name" placeholder="*Назва">
+                        <input formControlName="title" type="text" class="form__title" id="title" placeholder="*Заголовок">
+                    </div>
+                    <div class="description">
+                        <textarea formControlName="description" name="description" class="form__textarea" id="description" name="" cols="30" rows="10" placeholder="*Опис"></textarea>
+                    </div>
+                    <ng-container *ngIf="!isUploaded">
+                        <div class="category__file_wrapper">
+                            <div class="file">
+                                <input type="file" class="form__file" id="formFile" (change)="upload($event)">
+                            </div>
+                            <div class="progress">
+                                <div class="progress__item" role="progressbar"
+                                    [style.width.%]="uploadPercent" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="isUploaded">
+                        <div class="file__load">
+                            <img class="admin__img" [src]="valueByControl('imagePath')" alt="">
+                            <button type="button" class="image__button" (click)="deleteImage()">Видалити</button>
+                        </div>
+                    </ng-container>
+                    <button [disabled]="discountForm.invalid" type="submit" class="form__button">{{ editStatus ? 'Зберегти' : 'Додати' }}</button>
+                </form>
+            </div>
+        </ng-container>
+        
+       
+        <ng-container *ngIf="!isModalOpen">
+            <div class="table__wrapper">
+                <table class="table">
+                    <tr class="table__header">
+                        <th class="header__sharp table__item">Дата</th>
+                        <th class="header__name table__item">Назва</th>
+                        <th class="header__title table__item">Заголовок</th>
+                        <th class="header__desc table__item">Опис</th>
+                        <th class="header__image table__item">Картинка</th>
+                        <th class="header__actions table__item">Дії</th>
+                    </tr>
+                    <tr class="table__main" *ngFor="let discount of adminDiscounts">
+                        <td class="main__sharp table__item">{{ discountDate }}</td>
+                        <td class="main__sharp table__item">{{ discount.name }}</td>
+                        <td class="main__title table__item">
+                            {{ discount.title | slice:0:30 }}
+                            <span *ngIf="discount.title.length > 30">...</span>
+                        </td>
+                        <td class="main__desc table__item">
+                            {{ discount.description | slice:0:60 }}
+                            <span *ngIf="discount.description.length > 60">...</span>
+                        </td>
+                        <td class="main__image table__item">
+                            <img class="main__image_item" [src]="discount.imagePath" alt="">
+                        </td>
+                        <td class="main__actions table__item">
+                            <button (click)="editDiscount(discount)" class="actions__edit actions__btn" type="button">Редагувати</button>
+                            <button (click)="deleteDiscount(discount)" class="actions__delete actions__btn" type="button">Видалити</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </ng-container>
+    </div>
+</div>
+

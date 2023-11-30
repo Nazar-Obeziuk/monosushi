@@ -1,0 +1,114 @@
+<div class="box">
+    <section class="home__section">
+        <div class="container">
+            <div class="home__discount_wrapper">
+                <div class="home__discount_wrapper">
+                    <div class="home__discount_swiper">
+                        <div class="swiper__slide_discount">
+                            <a href="" class="slide__discount_link">
+                                <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/5-tyj-v-podarunok-.jpg" alt="" class="discount__link_image">
+                            </a>
+                        </div>
+                        <div class="swiper__slide_discount">
+                            <a href="" class="slide__discount_link">
+                                <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/rol-tyzhnya.jpg" alt="" class="discount__link_image">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="delivery__info_section">
+        <div class="container">
+            <div class="delivery__wrapper">
+                <div class="home__delivery_wrapper">
+                    <div class="delivery__info">
+                        <div class="delivery__zone_block delivery__block">
+                            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/mn-delivery-img.svg" alt="" class="delivery__zone_image">
+                            <button routerLink="./delivery-payment" class="delivery__zone_button" type="button">Зони Доставки</button>
+                        </div>
+                        <div class="delivery__info_line"></div>
+                        <div class="delivery__time_block delivery__block">
+                            <img src="	https://monosushi.com.ua/wp-content/uploads/2020/10/mono-supermen.svg" alt="" class="delivery__time_image">
+                            <p class="delivery__time_text">
+                                Середній час доставки в <br> зеленій зоні <b>00:43:00</b>
+                            </p>
+                        </div>
+                        <div class="delivery__info_line"></div>
+                        <div class="delivery__work_block delivery__block">
+                            <img src="	https://monosushi.com.ua/wp-content/uploads/2020/10/mono-bonus.svg" alt="" class="delivery__work_image">
+                            <p class="delivery__work_text">
+                                Наш графік роботи <br> Працюємо з <b>11:00</b> до <b>22:30</b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product__section">
+        <div class="container">
+            <div class="product__wrapper">
+
+                <div class="product__wrapper_nav">
+                    <ul class="product__nav">
+                        <li class="product__nav_list">
+                            <a href="" class="nav__list_item nav__list_active">Всі</a>
+                        </li>
+                        <li class="product__nav_list">
+                            <a href="" class="nav__list_item">Роли Філадельфія</a>
+                        </li>
+                        <li class="product__nav_list">
+                            <a href="" class="nav__list_item">Роли Каліфорнія</a>
+                        </li>
+                        <li class="product__nav_list">
+                            <a href="" class="nav__list_item">Запечені Роли</a>
+                        </li>
+                        <li class="product__nav_list">
+                            <a href="" class="nav__list_item">Фірмові Суші</a>
+                        </li>
+                        <li class="product__nav_list">
+                            <a href="" class="nav__list_item">Преміум Суші</a>
+                        </li>
+                        <li class="product__nav_list">
+                            <a href="" class="nav__list_item">Роли Макі</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- [routerLink]="['/discount', discount.id] -->
+                <div class="product__main_wrapper">
+                    <div class="product__card" *ngFor="let homeProduct of homeProducts">
+                        <div class="card__image_wrapper">
+                            <img [routerLink]="['/product/' + homeProduct.path, homeProduct.id]" [src]="homeProduct.imagePath" alt="" class="product__card_image">
+                        </div>
+                        <div class="card__info_wrapper">
+                            <h3 [routerLink]="['/product/' + homeProduct.path, homeProduct.id]" class="card__info_title">
+                                {{ homeProduct.name | slice:0:22 }}
+                                <span *ngIf="homeProduct.name.length > 22">...</span>
+                            </h3>
+                            <div class="card__info_desc">
+                                <p class="info__desc_ing">
+                                    {{ homeProduct.ingredients | slice:0:30 }}
+                                    <span *ngIf="homeProduct.ingredients.length > 30">...</span>
+                                </p>
+                                <h4 class="info__desc_weight">{{ homeProduct.weight }}</h4>
+                            </div>
+                            <div class="card__info_order">
+                                <p class="info__order_price"><span class="order__price_bold">{{ homeProduct.price }}</span> грн</p>
+                                <div class="info__order_count">
+                                    <button class="order__count_minus order__count_btn">-</button>
+                                    <span class="order__count_text">1</span>
+                                    <button class="order__count_plus order__count_btn">+</button>
+                                </div>
+                                <button class="info__order_button" type="button">Замовити</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

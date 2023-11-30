@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="wrapper">
+        <button (click)="toggleProductForm()" class="wrapper__add_discount">Додати продукт</button>
+        <ng-container *ngIf="isFormOpen">
+            <div class="forms">
+                <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+                    <div class="form__rolls_wrapper">
+                        <select formControlName="category" class="rolls__select product__input">
+                            <option [ngValue]="category" class="rolls__select_option" *ngFor="let category of adminCategories">{{ category.name }}</option>
+                        </select>
+                    </div>
+                    <div class="form__header">
+                        <input formControlName="name" type="text" class="form__name product__input" id="name" placeholder="*Назва">
+                        <input formControlName="path" type="text" class="form__path product__input" id="path" placeholder="*Шлях">
+                    </div>
+                    <div class="form__ing_wrapper">
+                        <input formControlName="ingredients" class="ing__input product__input" type="text" placeholder="*Інгредієнти">
+                    </div>
+                    <div class="form__info_wrapper">
+                        <input formControlName="weight" class="form__info_weight product__input" type="text" placeholder="*Вага">
+                        <input formControlName="price" class="form__info_price product__input" type="number" placeholder="*Ціна">
+                    </div>
+                    <ng-container *ngIf="!isUploaded">
+                        <div class="category__file_wrapper">
+                            <div class="file">
+                                <input type="file" class="form__file" id="formFile" (change)="upload($event)">
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="isUploaded">
+                        <div class="file__load">
+                            <img class="admin__img" [src]="valueByControl('imagePath')" alt="">
+                            <button type="button" class="image__button" (click)="deleteImage()">Видалити</button>
+                        </div>
+                    </ng-container>
+                    <button [disabled]="productForm.invalid" type="submit" class="form__button">{{ editStatus ? 'Зберегти' : 'Додати' }}</button>
+                </form>
+            </div>
+        </ng-container>
+        
+       
+        <ng-container *ngIf="!isFormOpen">
+            <div class="table__wrapper">
+                <table class="table">
+                    <tr class="table__header">
+                        <th class="header__sharp table__item">№</th>
+                        <th class="header__category table__item">Категорія</th>
+                        <th class="header__name table__item">Назва</th>
+                        <th class="header__way table__item">Шлях</th>
+                        <th class="header__ingradients table__item">Інгредієнти</th>
+                        <th class="header__weight table__item">Вага</th>
+                        <th class="header__price table__item">Ціна</th>
+                        <th class="header__image table__item">Картинка</th>
+                        <th class="header__actions table__item">Дії</th>
+                    </tr>
+                    <tr class="table__main" *ngFor="let product of adminProducts">
+                        <td class="main__sharp table__item">
+                            № {{ (product.id + '').length > 10 ? (product.id + '' | slice: 0:10) + '...' : product.id }}
+                        </td>
+                        <td class="main__category table__item">{{ product.category.name }}</td>
+                        <td class="main__name table__item">{{ product.name }}</td>
+                        <td class="main__path table__item">{{ product.path }}</td>
+                        <td class="main__ing table__item">
+                            {{ product.ingredients | slice:0:30 }}
+                            <span *ngIf="product.ingredients.length > 30">...</span>
+                        </td>
+                        <td class="main__weight table__item">{{ product.weight }}</td>
+                        <td class="main__price table__item">{{ product.price }}</td>
+                        <td class="main__image table__item">
+                            <img class="main__image_item" [src]="product.imagePath" alt="">
+                        </td>
+                        <td class="main__actions table__item">
+                            <button (click)="editProduct(product)" class="actions__edit actions__btn" type="button">Редагувати</button>
+                            <button [disabled]="editStatus" (click)="deleteProduct(product)" class="actions__delete actions__btn" type="button">Видалити</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </ng-container>
+    </div>
+</div>

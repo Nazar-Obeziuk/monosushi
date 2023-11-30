@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="admin__wrapper">
+        <div class="admin__wrapper_items">
+            <button class="admin__item_btn" routerLink="discount" routerLinkActive="admin__item_active" type="button">Акції</button>
+            <button class="admin__item_btn" routerLink="category" routerLinkActive="admin__item_active" type="button">Категорії</button>
+            <button class="admin__item_btn" routerLink="product" routerLinkActive="admin__item_active" type="button">Товари</button>
+            <button class="admin__item_btn" routerLink="orders" routerLinkActive="admin__item_active" type="button">Замовлення</button>
+            <button (click)="logout()" class="admin__exit" type="button">Вихід</button>
+        </div>
+        <div class="admin__wrapper_content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

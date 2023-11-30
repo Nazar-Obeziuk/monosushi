@@ -1,0 +1,62 @@
+@import '../shared/styles/variables';
+@import '../shared/styles/base';
+@import '../shared/styles/mixins';
+
+.container {
+    max-width: 96%;
+    margin: 20px auto;
+}
+.admin {
+
+		&__wrapper {
+            display: flex;
+            gap: 40px;
+            margin: 40px 0;
+
+			&_items {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+			}
+
+			&_content {
+			}
+		}
+
+        &__exit {
+            margin-top: 20px;
+            width: 100px;
+            height: 60px;
+            border-radius: 10px;
+            border: none;
+            background: $primary;
+            font-size: 16px;
+            font-weight: 700;
+            color: $black;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+		&__item {
+
+			&_btn {
+                width: 200px;
+                height: 60px;
+                background: none;
+                border: none;
+                font-size: 16px;
+                color: $black;
+                cursor: pointer;
+                border-top: 1px solid rgb(238, 238, 238);
+                border-right: 1px solid rgb(238, 238, 238);
+                border-bottom: 1px solid rgb(238, 238, 238);
+			}
+		}
+}
+
+.admin__item_active {
+    border: none;
+    border-top: 5px solid $primary;
+    font-weight: 700;
+    color: $black;
+}
